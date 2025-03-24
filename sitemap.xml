@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://minorcodepaintcell.github.io/funwebs/</loc>
+    <loc>https://minorcodepaintcell.github.io/web-demos/</loc>
     <lastmod>2025-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://codepaint.github.io/funwebs/pages/AsciiCam.html</loc>
+    <loc>https://codepaint.github.io/web-demos/pages/AsciiCam.html</loc>
     <lastmod>2025-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
