@@ -1,2 +1,7 @@
 # web-demos
-纯前端实现的各种demo案例，和具体技术无关。
+
+纯前端实现的各种 demo 案例，与框架无关。
+
+- canvas
+- web components
+- requestAnimationFrame

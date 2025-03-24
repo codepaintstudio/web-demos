@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codepaint.github.io/funwebs/sitemap.xml
