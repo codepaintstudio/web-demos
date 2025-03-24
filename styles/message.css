@@ -1,0 +1,77 @@
+/* 全局消息容器 */
+.message-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* 消息样式 */
+.message {
+    padding: 12px 24px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 16px;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+/* 错误消息样式 */
+.message-error {
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+}
+
+/* 错误图标 */
+.message-error::before {
+    content: "⚠️";
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* 消息文本 */
+.message-content {
+    color: #333;
+    font-size: 14px;
+}
+
+/* 错误消息文本 */
+.message-error .message-content {
+    color: #cf1322;
+}
+
+/* 消息退出动画 */
+.message-leave {
+    animation: messageSlideOut 0.3s ease-in forwards;
+}
+
+/* 滑入动画 */
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 滑出动画 */
+@keyframes messageSlideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}

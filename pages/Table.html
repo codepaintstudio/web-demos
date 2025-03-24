@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>学生信息表格 | 交互式数据编辑器</title>
+
+    <meta name="description" content="体验交互式学生信息表格编辑器，支持实时编辑和数据验证，轻松管理学生信息和成绩数据。">
+    <meta name="keywords" content="学生信息表格, 数据编辑器, 成绩管理, 交互式表格, 前端项目">
+    <meta name="author" content="minorcell">
+
+    <meta property="og:title" content="学生信息表格 | 交互式数据编辑器">
+    <meta property="og:description" content="体验交互式学生信息表格编辑器，支持实时编辑和数据验证，轻松管理学生信息和成绩数据。">
+    <meta property="og:image"
+        content="https://images.pexels.com/photos/31207109/pexels-photo-31207109.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codepaint.github.io/web-demos/" />
+    <link rel="stylesheet" href="../styles/table.css">
+    <link rel="stylesheet" href="../styles/message.css">
+    <script src="../components/nav-bar.js"></script>
+</head>
+
+<body>
+    <nav-bar></nav-bar>
+    <div class="container">
+        <h1>学生信息表格</h1>
+        <div class="table-container">
+            <table id="student-table">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>数学</th>
+                        <th>英语</th>
+                        <th>科学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 表格内容将由JavaScript动态生成 -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="instructions">
+            <p>点击单元格可以编辑内容</p>
+            <p>验证规则：</p>
+            <ul>
+                <li>姓名：不能为空</li>
+                <li>学号：不能为空</li>
+                <li>年龄：必须是15-25之间的数字</li>
+                <li>成绩：必须是0-100之间的数字</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../scripts/table.js" defer></script>
+</body>
+
+</html>
