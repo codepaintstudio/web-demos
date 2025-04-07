@@ -10,7 +10,7 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }).then((str
 
     video.onplaying = () => {
         const width = 160;
-        const height = 80;
+        const height = 75;
         canvas.width = width;
         canvas.height = height;
 
@@ -34,4 +34,4 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }).then((str
 
         renderFrame();
     };
-}).catch(err => console.error("摄像头访问失败:", err));
+}).catch(err => document.getElementById("asciiCam").textContent = err);
