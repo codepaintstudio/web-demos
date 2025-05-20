@@ -22,11 +22,12 @@ body {
     line-height: 8px;
 }
 
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+#input {
+    width: 25vw;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
 }

@@ -25,11 +25,10 @@
 <body>
     <nav-bar></nav-bar>
     <div class="container">
-        <h1>ASCII 摄像头</h1>
-        <button onclick="toggleCamera()">切换相机</button>
-        <button onclick="captureFrame()">捕获当前帧</button>
+        <h1>彩色 ASCII 摄像头</h1>
+        <p>你所看到的内容，是绘制的彩色ASCII哦～。滑动下面的轨道，数值越小则精细度越高，当然对性能要求就越高～</p>
+        <input type="range" id="input" min="1" max="10" value="4" step="1" />
         <div id="asciiCam"></div>
-
     </div>
 
     <script src="../scripts/asciicam.js" defer></script>

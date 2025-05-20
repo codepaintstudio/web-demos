@@ -1,5 +1,6 @@
 let facingMode = "user";
 let isRunning = true;
+let characterSize = 4;
 const asciiChars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 
 function startCamera() {
@@ -23,35 +24,39 @@ function startCamera() {
                     if (!isRunning) return;
                     ctx.drawImage(video, 0, 0, width, height);
                     const imgData = ctx.getImageData(0, 0, width, height).data;
-                    let ascii = "";
+                    let asciiHtml = "";
 
-                    for (let y = 0; y < height; y++) {
-                        for (let x = 0; x < width; x++) {
-                            const i = (y * width + (width - x - 1)) * 4;
-                            const r = imgData[i];
-                            const g = imgData[i + 1];
-                            const b = imgData[i + 2];
+                    for (let y = 0; y < height; y += characterSize) {
+                        for (let x = 0; x < width; x += characterSize) {
+                            let r = 0, g = 0, b = 0, count = 0;
+                            for (let dy = 0; dy < characterSize && (y + dy) < height; dy++) {
+                                for (let dx = 0; dx < characterSize && (x + dx) < width; dx++) {
+                                    const i = ((y + dy) * width + (width - (x + dx) - 1)) * 4;
+                                    r += imgData[i];
+                                    g += imgData[i + 1];
+                                    b += imgData[i + 2];
+                                    count++;
+                                }
+                            }
+                            r = Math.floor(r / count);
+                            g = Math.floor(g / count);
+                            b = Math.floor(b / count);
+
                             const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
                             const charIndex = Math.floor(brightness * (asciiChars.length - 1));
-                            ascii += asciiChars[charIndex];
+                            const char = asciiChars[charIndex];
+
+                            asciiHtml += `<span style="color: rgb(${r},${g},${b})">${char}</span>`;
                         }
-                        ascii += "\n";
+                        asciiHtml += "<br>";
                     }
-                    asciiCam.textContent = ascii;
-                    requestAnimationFrame(renderFrame)
+                    asciiCam.innerHTML = asciiHtml;
+                    requestAnimationFrame(renderFrame);
                 }
 
                 renderFrame();
             };
 
-            window.captureFrame = function () {
-                const text = asciiCam.textContent;
-                const blob = new Blob([text], { type: "text/plain" });
-                const link = document.createElement("a");
-                link.href = URL.createObjectURL(blob);
-                link.download = "ascii_art.txt";
-                link.click();
-            };
         })
         .catch(err => {
             document.getElementById("asciiCam").textContent =
@@ -59,13 +64,20 @@ function startCamera() {
         });
 }
 
-function toggleCamera() {
-    facingMode = facingMode === "user" ? "environment" : "user";
-    isRunning = false;
-    setTimeout(() => {
-        isRunning = true;
-        startCamera();
-    }, 500);
-}
-
 startCamera();
+
+// 修复：检查元素是否存在，避免 undefined
+const rangeControl = document.getElementById("input");
+if (rangeControl) {
+    // 新增：设置初始值（与 characterSize 同步）
+    rangeControl.value = characterSize;
+
+    rangeControl.addEventListener("input", (event) => {
+        const value = event.target.value;
+        // 新增：确保转换后的值有效（避免 NaN）
+        const newSize = Math.max(1, Math.min(10, Number(value) || 4)); // 限制范围 1-10
+        characterSize = newSize;
+    });
+} else {
+    console.error("未找到 id 为 'input' 的 range 元素");
+}
