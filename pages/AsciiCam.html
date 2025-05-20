@@ -26,7 +26,10 @@
     <nav-bar></nav-bar>
     <div class="container">
         <h1>ASCII 摄像头</h1>
-        <pre id="asciiCam"></pre>
+        <button onclick="toggleCamera()">切换相机</button>
+        <button onclick="captureFrame()">捕获当前帧</button>
+        <div id="asciiCam"></div>
+
     </div>
 
     <script src="../scripts/asciicam.js" defer></script>
